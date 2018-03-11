@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {ApiProvider} from '../../providers/api/api';
+
 
 @Component({
   selector: 'page-list',
@@ -10,7 +12,10 @@ export class ListPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
   typesOfShoes: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  countries: string[];
+  errorMessage: string;
+
+  constructor(public restapi: ApiProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.typesOfShoes = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -26,8 +31,18 @@ export class ListPage {
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
+
+      this.getCountries();
+
     }
   }
+
+  getCountries() {
+  this.restapi.getCountries()
+     .subscribe(
+       countries => this.countries = countries,
+       error =>  this.errorMessage = <any>error);
+}
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!

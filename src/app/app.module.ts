@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -51,6 +52,8 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { ApiProvider } from '../providers/api/api';
+import { Http } from '@angular/http';
 
 
 @NgModule({
@@ -69,6 +72,7 @@ import {
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         IonicModule.forRoot(MyApp),
         BrowserAnimationsModule,
         MatAutocompleteModule,
@@ -123,7 +127,8 @@ import {
         {
             provide: ErrorHandler,
             useClass: IonicErrorHandler
-        }
+        },
+    ApiProvider
     ]
 })
 export class AppModule {}
