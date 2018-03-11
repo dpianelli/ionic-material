@@ -15,6 +15,7 @@ import { PaginatorPage } from '../pages/paginator/paginator';
 import { ProgressBarPage } from '../pages/progress-bar/progress-bar';
 import { ProgressSpinnerPage } from '../pages/progress-spinner/progress-spinner';
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
@@ -53,6 +54,8 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { ApiProvider } from '../providers/api/api';
+import { SearchPipe } from '../pipes/search/search';
+import { SortPipe } from '../pipes/sort/sort';
 import { Http } from '@angular/http';
 
 
@@ -61,6 +64,8 @@ import { Http } from '@angular/http';
         MyApp,
         HomePage,
         ListPage,
+        SearchPipe,
+        SortPipe,
         TabPage,
         GridPage,
         InputPage,

@@ -14,6 +14,9 @@ export class ListPage {
   typesOfShoes: any;
   countries: string[];
   errorMessage: string;
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
 
   constructor(public restapi: ApiProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.typesOfShoes = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
@@ -35,6 +38,11 @@ export class ListPage {
       this.getCountries();
 
     }
+  }
+
+  sort(){
+  this.descending = !this.descending;
+  this.order = this.descending ? 1 : -1;
   }
 
   getCountries() {

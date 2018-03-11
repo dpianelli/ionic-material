@@ -17,9 +17,10 @@
 <p>
   Options selected: {{shoes.selectedOptions.selected.length}}
 </p>
-
+<ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+<button ion-button type="button" (click)="sort()">Sort</button>
 <ion-list>
-  <ion-item *ngFor="let c of countries">
+  <ion-item *ngFor="let c of countries | search : terms | sort: {property: column, order: order}">
     <ion-avatar item-left>
       <img src="{{c.flag}}">
     </ion-avatar>
